@@ -82,5 +82,24 @@ src/
 │   │       └── GameInitializer.java
 
 
+## Concurrencia y Sincronización
+
+Este juego simula múltiples entidades móviles que actúan al mismo tiempo. Para lograrlo, se utiliza programación concurrente en Java:
+
+* Cada personaje móvil (Neo y los Agentes) se ejecuta en su propio hilo (Thread), lo que permite que actúen de manera paralela.
+
+* El tablero (GameBoard) es compartido entre todos los hilos, por lo que se protege con un bloque synchronized y un lock para asegurar que solo un hilo pueda leer o modificar una celda a la vez.
+
+* Las operaciones críticas, como verificar si una celda está libre (isFree), mover elementos (moveElement), y obtener objetos en una posición (getAt), están todas sincronizadas para evitar condiciones de carrera.
+
+La sincronización asegura que:
+
+* Neo no se mueva a una posición ocupada por otro Agente.
+
+* Los Agentes no colisionen entre sí.
+
+* El estado del tablero siempre se mantenga coherente al imprimirlo o al buscar caminos.
+
+
 ## Autor
 David Alfonso Barbosa Gómez
